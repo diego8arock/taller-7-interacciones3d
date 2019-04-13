@@ -52,4 +52,3 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.92725, 0 )
 
 [node name="TriggerBox8" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.09853, -1.92725, 0 )
-
