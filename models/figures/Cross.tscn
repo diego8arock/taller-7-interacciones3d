@@ -15,4 +15,3 @@ material/0 = null
 transform = Transform( 0.0707107, -0.707107, 0, 0.0707107, 0.707107, 0, 0, 0, 0.1, 0, 0, 0 )
 mesh = SubResource( 2 )
 material/0 = null
-

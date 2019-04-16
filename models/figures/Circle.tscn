@@ -4,4 +4,3 @@
 
 [node name="CSGTorus" type="CSGTorus" parent="."]
 transform = Transform( 0.25, 0, 0, 0, -1.09278e-08, -0.25, 0, 0.25, -1.09278e-08, 0, 0, 0 )
-
