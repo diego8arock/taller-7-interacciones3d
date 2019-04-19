@@ -9,19 +9,31 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Spatial",
+"class": "PuzzlePiece",
+"language": "GDScript",
+"path": "res://models/pieces/piece.gd"
+}, {
 "base": "Area",
 "class": "TriggerBox",
 "language": "GDScript",
 "path": "res://models/board/trigger_box.gd"
+}, {
+"base": "Area",
+"class": "TriggerZone",
+"language": "GDScript",
+"path": "res://models/puzzle/trigger_zone.gd"
 } ]
 _global_script_class_icons={
-"TriggerBox": ""
+"PuzzlePiece": "",
+"TriggerBox": "",
+"TriggerZone": ""
 }
 
 [application]
 
 config/name="Taller 7"
-run/main_scene="res://games/TicTacToe.tscn"
+run/main_scene="res://games/Puzzle.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -46,11 +58,23 @@ player_choose={
 , Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
+player_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777231,"unicode":0,"echo":false,"script":null)
+ ]
+}
+player_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [layer_names]
 
 3d_render/layer_1="player"
 3d_physics/layer_1="player"
+3d_physics/layer_2="puzzle_piece"
+3d_physics/layer_3="puzzle_trigger_zone"
 
 [rendering]
 

@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://models/puzzle/TriggerZone.tscn" type="PackedScene" id=1]
+
+[node name="PuzzleBoard" type="Spatial"]
+
+[node name="LeftTopTZ" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 0 )
+
+[node name="LeftBottomTZ" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -1, 0 )
+
+[node name="RightTopTZ" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0 )
+
+[node name="RightBottomTZ" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1, 0 )
