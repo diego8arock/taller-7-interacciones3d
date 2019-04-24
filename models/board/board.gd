@@ -22,8 +22,11 @@ onready var win_move_8 = [2, 4, 6]
 var trigger_pref = "TriggerBox%d"
 
 var move_results = []
+var moves_counter = 0
+const total_move = 9
 
 signal end_game(player_num)
+signal tied_game
 
 func _ready():
 	pass
@@ -44,7 +47,10 @@ func evaluate_play(player_num, figure_type):
 		if m:			
 			emit_signal("end_game", player_num)
 	
-	pass
+	moves_counter += 1
+	if moves_counter == total_move:
+		emit_signal("tied_game")
+	
 
 func _evaluate_move(move, figure_type) -> bool:
 	var is_win : bool = true

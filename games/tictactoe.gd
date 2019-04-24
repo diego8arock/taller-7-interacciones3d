@@ -27,3 +27,8 @@ func set_player_on_start_position(player):
 func _on_Board_end_game(player_num):
 	print("Player %s won!" % player_num)
 	get_tree().paused = true
+
+
+func _on_Board_tied_game() -> void:
+	print("It's a draw!")
+	get_tree().paused = true
