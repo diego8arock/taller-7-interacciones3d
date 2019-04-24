@@ -55,7 +55,7 @@ func move_player_mouse() -> void:
 	if camera:
 		var ray_origin = camera.project_ray_origin(mouse_pos)
 		var ray_direction = camera.project_ray_normal(mouse_pos)
-		var to = ray_origin + ray_direction * 2.7
+		var to = ray_origin + ray_direction * 4
 		self.transform.origin[0] = to.x
 		self.transform.origin[1] = to.y
 		self.move_and_collide(velocity)
@@ -66,15 +66,6 @@ func move_player_mouse() -> void:
 			piece_selected.move_and_collide(velocity)
 		
 func process_key() -> void:
-	velocity = Vector3()
-	velocity.x = 0
-	velocity.x = 0
-	if Input.is_action_pressed("player_forward"):
-		velocity.z -= 1
-	if Input.is_action_pressed("player_backward"):
-		velocity.z += 1
-	velocity = velocity.normalized() * speed
-	
 	if Input.is_action_pressed("player_right"):
 		if $"/root/Global".piece_selected and not is_piece_selected:
 			$"/root/Global".piece_selected.rotate(Vector3(0,0,1), 90 * PI / 180)

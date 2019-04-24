@@ -36,9 +36,6 @@ func _input(event):
 	
 	if event is InputEventMouseMotion:
 		mouse_pos = event.position
-	
-	if event is InputEventKey:
-		process_key()
 
 func _unhandled_input(event):
 	if not is_player_active:
@@ -69,20 +66,11 @@ func move_player_mouse() -> void:
 	if camera:
 		var ray_origin = camera.project_ray_origin(mouse_pos)
 		var ray_direction = camera.project_ray_normal(mouse_pos)
-		var to = ray_origin + ray_direction * 2.7
+		var to = ray_origin + ray_direction * 6
 		self.transform.origin[0] = to.x
 		self.transform.origin[1] = to.y
+		self.transform.origin[2] = 0.812
 		self.move_and_collide(velocity)
-		
-func process_key() -> void:
-	velocity = Vector3()
-	velocity.x = 0
-	velocity.x = 0
-	if Input.is_action_pressed("player_forward"):
-		velocity.z -= 1
-	if Input.is_action_pressed("player_backward"):
-		velocity.z += 1
-	velocity = velocity.normalized() * speed
 	
 func activate() -> void:
 	is_player_active = true
