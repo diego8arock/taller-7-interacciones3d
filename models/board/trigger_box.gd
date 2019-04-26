@@ -18,6 +18,9 @@ func _on_TriggerBox_body_entered(body):
 	if is_disabled:
 		return 
 		
+	if not "Player" in body.name:
+		return
+		
 	$MeshInstance.visible = true
 	if not $"/root/Global".trigger_zone_entered:
 		$"/root/Global".trigger_zone_entered = self
@@ -25,7 +28,10 @@ func _on_TriggerBox_body_entered(body):
 func _on_TriggerBox_body_exited(body):
 	if is_disabled:
 		return 
-		
+	
+	if not "Player" in body.name:
+		return
+	
 	$MeshInstance.visible = false
 	$"/root/Global".trigger_zone_entered = null
 

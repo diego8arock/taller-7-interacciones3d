@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://player/ticatoe_player/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://models/board/Board.tscn" type="PackedScene" id=2]
-[ext_resource path="res://models/frontier/Frontier.tscn" type="PackedScene" id=3]
+[ext_resource path="res://models/frontier/Frontier.tscn" type="PackedScene" id=1]
+[ext_resource path="res://player/ticatoe_player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://models/board/Board.tscn" type="PackedScene" id=3]
 [ext_resource path="res://player/ticatoe_player/blue_material.tres" type="Material" id=4]
 [ext_resource path="res://games/tictactoe.gd" type="Script" id=5]
 [ext_resource path="res://player/ticatoe_player/red_material.tres" type="Material" id=6]
@@ -15,39 +15,43 @@ script = ExtResource( 5 )
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.986505, 0.163729, 0, -0.163729, 0.986505, 0, 1.28532, 6.37164 )
 
-[node name="Board" parent="." instance=ExtResource( 2 )]
+[node name="Board" parent="." instance=ExtResource( 3 )]
 
 [node name="Frontiers" type="Spatial" parent="."]
 
-[node name="FrontierBack" parent="Frontiers" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -4.72563 )
+[node name="FrontierBack" parent="Frontiers" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1.59911 )
 
-[node name="FrontierFront" parent="Frontiers" instance=ExtResource( 3 )]
+[node name="FrontierFront" parent="Frontiers" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.64683 )
 
-[node name="FrontierLeft" parent="Frontiers" instance=ExtResource( 3 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.42234, 0, 3.6279 )
+[node name="FrontierLeft" parent="Frontiers" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.00396, 0, 3.6279 )
 
-[node name="FrontierRight" parent="Frontiers" instance=ExtResource( 3 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.07857, 0, 3.6279 )
+[node name="FrontierRight" parent="Frontiers" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.77919, 0, 3.6279 )
 
-[node name="FrontierTop" parent="Frontiers" instance=ExtResource( 3 )]
-transform = Transform( -4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0.43915, 3.35659, 4.58097 )
+[node name="FrontierTop" parent="Frontiers" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0.43915, 2.93102, 4.58097 )
 
-[node name="FrontierBottom" parent="Frontiers" instance=ExtResource( 3 )]
-transform = Transform( -4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0.416563, -3.64995, 4.67117 )
+[node name="FrontierBottom" parent="Frontiers" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0.416563, -1.83924, 4.67117 )
 
-[node name="Player1" parent="." instance=ExtResource( 1 )]
+[node name="Player1" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.812 )
+is_using_mouse = false
 player_material = ExtResource( 4 )
 player_figure = ExtResource( 8 )
 is_player_active = true
+is_using_vr = true
 
-[node name="Player2" parent="." instance=ExtResource( 1 )]
+[node name="Player2" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.811978 )
 figure_type = 1
+is_using_mouse = false
 player_material = ExtResource( 6 )
 player_figure = ExtResource( 7 )
+is_using_vr = true
 [connection signal="end_game" from="Board" to="." method="_on_Board_end_game"]
 [connection signal="tied_game" from="Board" to="." method="_on_Board_tied_game"]
 [connection signal="player_set_figure" from="Player1" to="." method="_on_Player1_player_set_figure"]

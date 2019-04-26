@@ -16,9 +16,9 @@ var clientTracker = null
 var fist_values = []
 export var is_using_vr : bool = false
 export var threshold : float = 2.0
-export var traslate_x_sensitiviy : float = 150.0
-export var traslate_y_sensitiviy : float = 150.0
-export var traslate_z_sensitiviy : float = 150.0
+export var traslate_x_sensitiviy : float = 1.0
+export var traslate_y_sensitiviy : float = 1.0
+export var traslate_z_sensitiviy : float = 50.0
 
 onready var speed : float = 0.05	
 signal player_set_figure(piece_selected, piece_selected_original_position,  piece_to_change)
@@ -63,12 +63,26 @@ func _process(delta: float) -> void:
 						piece_selected_original_position = []	
 					
 		if not(clientTracker.quat[0] == 0 and clientTracker.quat[1] == 0 and clientTracker.quat[2] == 0):
-			var quaty = clientTracker.quat[1]
-			var posx = clientTracker.pos[0] / traslate_x_sensitiviy
-			var posy = clientTracker.pos[1] / traslate_y_sensitiviy
-			var posz = clientTracker.pos[2] / traslate_z_sensitiviy
-			self.move_and_collide(Vector3(0,-posz,posy),false)
-					
+			self.transform.origin[2] = 0.812
+			self.move_and_collide(Vector3((_adjust_value_x(-0.33,clientTracker.pos[1]) * delta) * 2,(_adjust_value_z(0.0,clientTracker.pos[2]) * delta),0),false)
+
+func _adjust_value_x(center,posx)->float:
+	if posx == center:
+		return 0.0
+	elif posx > center:
+		return -1.0
+	else:
+		return 1.0
+
+func _adjust_value_z(center,posx)->float:
+	if posx == center:
+		return 0.0
+	elif posx > center:
+		return 1.0
+	else:
+		return -1.0
+
+				
 func _physics_process(delta):
 	if is_using_mouse:
 		move_player_mouse()		
@@ -137,7 +151,8 @@ func _start_vr() -> void:
 	clientTracker.connect("Tracker0@10.3.137.218")
 	clientGlove = vrpnClient.new()
 	clientGlove.connect("Glove14Right@localhost")
-	fist_values = [3.6, 4.5, 6.3, 2.5, 10.0, 7.5, 2.2, 9.4, 7.5, 3.9, 3.7, 6.6, 3.3, 6.5] 
+	#fist_values = [3.6, 4.5, 6.3, 2.5, 10.0, 7.5, 2.2, 9.4, 7.5, 3.9, 3.7, 6.6, 3.3, 6.5] #luis
+	fist_values = [3.7, 7.2, 5.8, 2.3, 10.0, 7.6, 2.6, 8.8, 7.2, 4.4, 3.8, 6.7, 4.3, 4.1] #diego 
 			
 
 			

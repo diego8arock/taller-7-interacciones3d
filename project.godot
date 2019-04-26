@@ -33,7 +33,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Taller 7"
-run/main_scene="res://games/Puzzle.tscn"
+run/main_scene="res://games/TicTacToe.tscn"
 config/icon="res://icon.png"
 
 [autoload]
